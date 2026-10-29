@@ -1,0 +1,881 @@
+@import url("https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap");
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Trebuchet MS',sans-serif;
+}
+
+body{
+    background:#fdf7ef;
+    color:#4b3621;
+}
+
+/*==================== HEADER ====================*/
+
+header{
+    background:#7a8744;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0px 4px 10px rgba(0,0,0,.2);
+}
+
+.logo h1{
+    color:#ffd4df;
+    font-size:40px;
+}
+
+.logo p{
+    color:white;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:18px;
+    transition:.3s;
+}
+
+nav a:hover,
+nav .activo{
+    color:#ffd4df;
+}
+
+/*==================== BANNER ====================*/
+
+.banner{
+
+    height:550px;
+
+    background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)),
+    url("../IMG/leche.jpeg");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.contenido{
+
+    color:white;
+
+}
+
+.contenido h2{
+
+    font-size:60px;
+
+}
+
+.contenido p{
+
+    font-size:22px;
+    margin:20px;
+
+}
+
+.boton{
+
+    background:#d98ca2;
+
+    color:white;
+
+    padding:15px 35px;
+
+    text-decoration:none;
+
+    border-radius:40px;
+
+    transition:.3s;
+
+}
+
+.boton:hover{
+
+    background:#b86f84;
+
+}
+
+/*==================== TITULOS ====================*/
+
+.titulo{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+.titulo h2{
+
+    font-size:45px;
+
+    color:#7a8744;
+
+    font-family:"Bagel Fat One",system-ui;
+
+    font-weight:400;
+
+}
+
+.titulo p{
+
+    margin-top:15px;
+
+    font-size:20px;
+
+}
+
+/*==================== NOSOTROS ====================*/
+
+.nosotros{
+
+    width:80%;
+    margin:auto;
+
+    text-align:center;
+
+    padding:50px;
+
+}
+
+.nosotros h2{
+
+    color:#d98ca2;
+    margin-bottom:20px;
+
+}
+
+/*==================== CATALOGO ====================*/
+
+.catalogo{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    align-items:stretch;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+    padding-bottom:70px;
+
+}
+
+.producto{
+
+    background:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0px 10px 25px rgba(0,0,0,.15);
+
+    transition:.4s;
+
+}
+
+.producto:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.producto img{
+
+    width:100%;
+
+    height:420px;
+
+    object-fit:cover;
+
+}
+
+.producto h3{
+
+    text-align:center;
+
+    color:#7a8744;
+
+    font-family:"Bagel Fat One",system-ui;
+
+    font-weight:400;
+
+    margin-top:20px;
+
+}
+
+.producto h4{
+
+    text-align:center;
+
+    color:#d98ca2;
+
+    font-size:28px;
+
+    margin:15px;
+
+}
+
+.producto p{
+
+    text-align:center;
+
+  
+
+    padding:0 20px 20px;
+
+    line-height:28px;
+
+}
+
+.producto button{
+
+    width:80%;
+
+    margin:20px auto 30px;
+
+    display:block;
+
+    padding:15px;
+
+    border:none;
+
+    background:#7a8744;
+
+    color:white;
+
+    border-radius:40px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.producto button:hover{
+
+    background:#d98ca2;
+
+}
+
+/*==================== CONTACTO ====================*/
+
+.contacto{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:40px;
+
+    padding-bottom:70px;
+
+}
+
+.info{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.info h3{
+
+    color:#7a8744;
+
+    margin-bottom:20px;
+
+}
+
+.info p{
+
+    margin:18px 0;
+
+    font-size:18px;
+
+}
+
+.formulario{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.formulario h3{
+
+    color:#d98ca2;
+
+    margin-bottom:20px;
+
+}
+
+.formulario label{
+
+    font-weight:bold;
+
+}
+
+.formulario input,
+.formulario textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    margin:10px 0 20px;
+
+    border:2px solid #d98ca2;
+
+    border-radius:12px;
+
+    outline:none;
+
+}
+
+.formulario input:focus,
+.formulario textarea:focus{
+
+    border-color:#7a8744;
+
+}
+
+.formulario button{
+
+    width:100%;
+
+    padding:15px;
+
+    background:#d98ca2;
+
+    color:white;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+.formulario button:hover{
+
+    background:#7a8744;
+
+}
+
+/*==================== REDES ====================*/
+
+.redes{
+
+    text-align:center;
+
+    padding:50px;
+
+}
+
+.redes h2{
+
+    color:#7a8744;
+
+    margin-bottom:20px;
+
+}
+
+.iconos{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin-top:30px;
+
+}
+
+.red{
+
+    background:#d98ca2;
+
+    color:white;
+
+    padding:18px 30px;
+
+    border-radius:40px;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.red:hover{
+
+    background:#7a8744;
+
+}
+
+/*==================== FOOTER ====================*/
+
+footer{
+
+    background:#7a8744;
+
+    color:white;
+
+    font-family:"Bodoni Moda",serif;
+
+    text-align:center;
+
+    padding:30px;
+
+    margin-top:40px;
+
+}
+
+/*==================== RESPONSIVE ====================*/
+
+@media(max-width:900px){
+
+header{
+
+    flex-direction:column;
+
+}
+
+nav{
+
+    margin-top:20px;
+
+}
+
+.banner{
+
+    height:400px;
+
+}
+
+.contenido h2{
+
+    font-size:40px;
+
+}
+
+.contacto{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+/*=========== FOOTER ===========*/
+
+footer{
+
+    background:#7a8744;
+
+    color:white;
+
+    margin-top:80px;
+
+    padding:50px;
+
+}
+
+.footer-contenedor{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    flex-wrap:wrap;
+
+    gap:40px;
+
+}
+
+.footer-contenedor h3{
+
+    margin-bottom:20px;
+
+    color:#ffd7df;
+
+    font-family:"Bagel Fat One",system-ui;
+
+    font-weight:400;
+
+}
+
+.footer-contenedor p{
+
+    margin:10px 0;
+
+    font-family:"Bodoni Moda",serif;
+
+}
+
+.copy{
+
+    text-align:center;
+
+    margin-top:30px;
+
+    font-size:15px;
+
+    font-family:"Bodoni Moda",serif;
+
+}
+
+header {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.menu {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    width: 100%;
+    height: 120px;
+    min-height: 120px;
+    margin: 0;
+    padding: 14px 10px;
+    background-color: #7a893a;
+}
+
+.menu .fuente {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: 265px;
+    height: 190px;
+    overflow: hidden;
+    margin: 0;
+    transform: translateY(-50%);
+}
+
+.menu .fuente img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.menu .logo {
+    position: absolute;
+    top: 50%;
+    left: 36%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 90px;
+    height: 75px;
+    margin: 0;
+    transform: translate(-50%, -50%);
+}
+
+.menu .logo a,
+.menu .min-logo a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    color: #7a893a;
+    text-decoration: none;
+}
+
+.menu .logo .material-symbols-outlined {
+    color: #7a893a;
+    font-size: 55px;
+}
+
+.menu .min-logo {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 67px;
+    height: 67px;
+    margin: 0;
+    transform: translateY(calc(-50% - 7px));
+}
+
+.menu .min-logo img {
+    display: block;
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+}
+
+.menu > ul {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: calc(60% - 20px);
+    min-width: 0;
+    margin: 0 0 0 40%;
+    padding: 12px clamp(18px, 3vw, 32px);
+    gap: clamp(10px, 2vw, 28px);
+    border: 4px solid #969f43;
+    border-radius: 50px;
+    background-color: #9aa259;
+    font-family: "Bagel Fat One", system-ui;
+    font-size: clamp(0.78rem, 1.35vw, 1.15rem);
+    list-style: none;
+    white-space: nowrap;
+}
+
+.menu > ul > li > a {
+    display: inline-block;
+    margin: 0;
+    color: #90490c;
+    font-size: inherit;
+    font-weight: normal;
+    letter-spacing: 0;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.menu > ul > li > a:hover {
+    color: #6e5614;
+    transform: scale(1.08);
+}
+
+@media (max-width: 900px) {
+    .menu {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 64px;
+        grid-template-areas: "brand account" "links links";
+        gap: 8px 14px;
+        height: auto;
+        min-height: 0;
+        padding: 10px 14px 14px;
+    }
+
+    .menu .fuente {
+        position: static;
+        grid-area: brand;
+        width: min(210px, 100%);
+        height: 82px;
+        transform: none;
+    }
+
+    .menu .logo {
+        display: none;
+    }
+
+    .menu > ul {
+        grid-area: links;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0;
+        padding: 8px 12px;
+        white-space: normal;
+        gap: 8px 16px;
+    }
+
+    .menu .min-logo {
+        position: static;
+        grid-area: account;
+        width: 58px;
+        height: 58px;
+        margin: 0 0 0 auto;
+        transform: none;
+    }
+
+    .menu .min-logo img {
+        width: 54px;
+        height: 54px;
+    }
+}
+
+/* Navegación compartida con 1.css. */
+header { position: relative; display: block; width: 100%; margin: 0; padding: 0; }
+.menu {
+    position: relative; z-index: 10; display: flex; align-items: center;
+    justify-content: flex-start; box-sizing: border-box; width: 100%;
+    height: 120px; min-height: 120px; margin: 0; padding: 14px 10px;
+    background-color: #7a893a;
+}
+.menu .fuente {
+    position: absolute; top: 50%; left: 20px; width: 265px; height: 190px;
+    overflow: hidden; margin: 0; transform: translateY(-50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+.menu .fuente > a { display: block; width: 100%; height: 100%; margin: 0; }
+.menu .fuente img { display: block; width: 100%; height: 100%; object-fit: fill; }
+.menu .fuente:hover { width: 290px; height: 220px; }
+.menu .logo {
+    position: absolute; top: 50%; left: 36%; display: flex; align-items: center;
+    justify-content: center; box-sizing: border-box; width: 90px; height: 75px;
+    margin: 0; border: 4px solid #b1bc54; border-radius: 50px;
+    background-color: #dae38a; transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+.menu .logo:hover { width: 90px; height: 90px; }
+.menu .logo .material-symbols-outlined { color: #7a893a; font-size: 55px; }
+.menu .min-logo {
+    position: absolute; top: 50%; right: 10px; display: flex; align-items: center;
+    justify-content: center; box-sizing: border-box; width: 67px; height: 67px;
+    margin: 0; border: 4px solid #ffce8a; border-radius: 50%;
+    background-color: #f8deaa; transform: translateY(calc(-50% - 7px));
+    transition: width 0.3s ease, height 0.3s ease;
+}
+.menu .min-logo img {
+    display: block; width: 72px; height: 72px; object-fit: contain;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+.menu .min-logo .material-symbols-outlined { font-size: 42px; line-height: 1; }
+.menu .min-logo:hover { width: 72px; height: 72px; }
+.menu .min-logo img:hover { width: 85px; height: 85px; }
+.menu > ul {
+    position: absolute; left: 40%; right: 90px; display: flex;
+    justify-content: space-between; box-sizing: border-box; width: auto; margin: 0;
+    padding: 12px clamp(18px, 3vw, 32px); gap: clamp(10px, 2vw, 28px);
+    border: 4px solid #969f43; border-radius: 50px; background-color: #9aa259;
+    font-family: "Bagel Fat One", system-ui;
+    font-size: clamp(0.78rem, 1.35vw, 1.15rem); list-style: none; white-space: nowrap;
+}
+.menu > ul > li { position: relative; }
+.menu > ul > li > a {
+    display: inline-block; color: #90490c; font-weight: normal; text-decoration: none;
+    font-family: "Bagel Fat One", system-ui;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.menu > ul > li::after {
+    content: ""; position: absolute; left: 56%; bottom: -8px; width: 0; height: 3px;
+    border-radius: 3px; background-color: #6e5614; transform: translateX(-50%);
+    transition: width 0.25s ease;
+}
+.menu > ul > li:hover::after { width: 100%; }
+.menu > ul > li > a:hover { color: #6e5614; transform: scale(1.6); }
+@media (max-width: 900px) {
+    .menu {
+        display: grid; grid-template-columns: minmax(120px, 190px) minmax(0, 1fr) 58px;
+        grid-template-areas: "brand links account"; gap: 8px 12px;
+        height: 120px; min-height: 120px; padding: 10px 14px;
+    }
+    .menu .fuente {
+        position: static; grid-area: brand; width: min(190px, 100%); height: 76px;
+        transform: none;
+    }
+    .menu .logo { display: none; }
+    .menu > ul {
+        position: static; grid-area: links; justify-content: space-between; flex-wrap: nowrap;
+        width: 100%; margin: 0; padding: 8px 10px; gap: 4px;
+        font-size: clamp(0.65rem, 1.2vw, 0.9rem); white-space: normal;
+    }
+    .menu .min-logo {
+        position: static; grid-area: account; width: 58px; height: 58px;
+        margin: 0 0 0 auto; transform: none;
+    }
+    .menu .min-logo img { width: 54px; height: 54px; }
+}
+@media (max-width: 700px) {
+    .menu {
+        grid-template-columns: minmax(0, 1fr) 58px;
+        grid-template-areas: "brand account" "links links"; gap: 8px 14px;
+        height: auto; min-height: 0; padding: 10px 14px 14px;
+    }
+    .menu .fuente { width: min(170px, 100%); height: 62px; }
+    .menu > ul { justify-content: space-around; flex-wrap: wrap; padding: 8px 12px; gap: 8px 12px; }
+}
+@media (max-width: 480px) {
+    .menu > ul { font-size: 0.78rem; gap: 8px 12px; }
+}
+
+@media (max-width: 480px) {
+    .menu .fuente {
+        width: 170px;
+        height: 62px;
+    }
+
+    .menu > ul {
+        font-size: 0.78rem;
+        gap: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalogo {
+        width: calc(100% - 24px);
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+        padding-bottom: 40px;
+    }
+
+    .producto img {
+        height: auto;
+        aspect-ratio: auto;
+        object-fit: contain;
+    }
+
+    .producto button {
+        margin-bottom: 22px;
+    }
+
+    .titulo {
+        padding: 38px 16px;
+    }
+
+    .titulo h2 {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+    }
+}

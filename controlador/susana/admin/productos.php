@@ -1,0 +1,168 @@
+<?php
+// Vista del CRUD de productos.
+// Solo los administradores pueden entrar aquí.
+
+require_once __DIR__ . "/../../conexion/conexion.php";
+require_once __DIR__ . "/../autenticacion.php";
+
+$pdo = $conexion;
+
+requerirAdmin();
+
+$editar = null;
+
+if (isset($_GET['editar'])) {
+    $idEditar = (int)$_GET['editar'];
+
+    $stmt = $pdo->prepare("SELECT * FROM productos WHERE id = ?");
+    $stmt->execute([$idEditar]);
+    $editar = $stmt->fetch();
+}
+
+$productos = $pdo->query(
+    "SELECT * FROM productos ORDER BY id ASC"
+)->fetchAll();
+
+$mensaje = $_GET['mensaje'] ?? '';
+$error = $_GET['error'] ?? '';
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Productos | Milky</title>
+    <link rel="stylesheet" href="../../../vista/css/1.css">
+    <link rel="stylesheet" href="../../../vista/css/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=logout,person_text,shopping_cart" rel="stylesheet">
+    <style>
+        .crud-contenedor{width:92%;max-width:1200px;margin:50px auto}
+        .crud-card{background:#fff;padding:30px;border-radius:25px;box-shadow:0 10px 25px rgba(0,0,0,.12);margin-bottom:35px}
+        .crud-card h2{color:#7a8744;margin-bottom:20px}
+        .crud-form{display:grid;gap:12px}
+        .crud-form input,.crud-form textarea{padding:12px;border:2px solid #d98ca2;border-radius:12px}
+        .crud-form button,.btn{border:0;border-radius:30px;padding:12px 20px;background:#d98ca2;color:#fff;text-decoration:none;cursor:pointer;display:inline-block}
+        .btn-verde{background:#7a8744}
+        .btn-rojo{background:#b85c6f}
+        table{width:100%;border-collapse:collapse}
+        th,td{padding:12px;border-bottom:1px solid #ddd;text-align:left}
+        td img{width:70px;height:70px;object-fit:cover;border-radius:12px}
+        .acciones{display:flex;gap:8px;flex-wrap:wrap}
+        .aviso{padding:14px;border-radius:12px;background:#e8f0d5;margin-bottom:20px}
+        .error{padding:14px;border-radius:12px;background:#f8d7da;margin-bottom:20px}
+        @media(max-width:800px){table{font-size:13px}.crud-contenedor{width:96%}}
+    </style>
+</head>
+<body>
+<header>
+    <nav class="menu">
+        <div class="fuente">
+            <a href="../../../index.php" aria-label="Ir al inicio"><img src="../../../vista/img/fuente.png" alt="Milky"></a>
+        </div>
+        <div class="logo">
+            <a href="../../mariangel/personas_registradas.php" aria-label="Ver cuentas"><span class="material-symbols-outlined" aria-hidden="true">person_text</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../../../index.php">Inicio</a></li>
+            <li><a href="../../../conocenos.php">Nosotros</a></li>
+            <li><a href="../../../productosSU.php">Productos</a></li>
+            <li><a href="../../../conocenos.php#preguntas">Comentarios</a></li>
+            <li><a href="../../../carrito.php" aria-label="Ir al carrito"><span class="material-symbols-outlined" aria-hidden="true">shopping_cart</span></a></li>
+        </ul>
+        <div class="min-logo">
+            <a href="../../conexion/cerrar.php" aria-label="Cerrar sesión"><span class="material-symbols-outlined" aria-hidden="true">logout</span></a>
+        </div>
+    </nav>
+</header>
+
+<main class="crud-contenedor">
+    <?php if ($mensaje): ?>
+        <div class="aviso">
+            Operación realizada correctamente.
+        </div>
+    <?php endif; ?>
+
+    <?php if ($error === 'datos'): ?>
+        <div class="error">
+            Revisa los datos del producto.
+        </div>
+    <?php endif; ?>
+
+    <section class="crud-card">
+        <h2><?= $editar ? 'Actualizar producto' : 'Crear producto' ?></h2>
+
+        <!-- FORMULARIO CREATE / UPDATE -->
+        <form class="crud-form" action="../productos.php" method="post">
+            <input type="hidden" name="accion" value="<?= $editar ? 'actualizar' : 'crear' ?>">
+
+            <?php if ($editar): ?>
+                <input type="hidden" name="id" value="<?= (int)$editar['id'] ?>">
+            <?php endif; ?>
+
+            <label>Nombre</label>
+            <input type="text" name="nombre" required value="<?= e($editar['nombre'] ?? '') ?>">
+
+            <label>Precio</label>
+            <input type="number" name="precio" min="1" step="0.01" required value="<?= e($editar['precio'] ?? '') ?>">
+
+            <label>Descripción</label>
+            <textarea name="descripcion" rows="4" required><?= e($editar['descripcion'] ?? '') ?></textarea>
+
+            <label>Nombre de la imagen</label>
+            <input type="text" name="imagen" placeholder="Ejemplo: leche.jpeg" required value="<?= e($editar['imagen'] ?? '') ?>">
+
+            <div>
+                <button type="submit">
+                    <?= $editar ? 'Actualizar' : 'Guardar producto' ?>
+                </button>
+
+                <?php if ($editar): ?>
+                    <a class="btn btn-verde" href="productos.php">Cancelar</a>
+                <?php endif; ?>
+            </div>
+        </form>
+    </section>
+
+    <section class="crud-card">
+        <h2>Productos registrados</h2>
+
+        <!-- READ: muestra todos los productos -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($productos as $producto): ?>
+                <tr>
+                    <td>
+                        <img src="../../../vista/img/susana%20img/<?= rawurlencode($producto['imagen']) ?>" alt="<?= e($producto['nombre']) ?>">
+                    </td>
+                    <td><?= e($producto['nombre']) ?></td>
+                    <td>$<?= number_format((float)$producto['precio'], 0, ',', '.') ?></td>
+                    <td>
+                        <div class="acciones">
+                            <!-- UPDATE -->
+                            <a class="btn btn-verde" href="productos.php?editar=<?= (int)$producto['id'] ?>">Editar</a>
+
+                            <!-- DELETE -->
+                            <a class="btn btn-rojo"
+                               href="../productos.php?accion=eliminar&id=<?= (int)$producto['id'] ?>"
+                               onclick="return confirm('¿Seguro que deseas eliminar este producto?');">
+                                Eliminar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </section>
+</main>
+<?php require __DIR__ . '/../../../vista/footer.php'; ?>
+</body>
+</html>

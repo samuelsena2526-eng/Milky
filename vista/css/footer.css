@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Amarante&family=Bodoni+Moda:opsz,wght@6..96,400&display=swap");
+
+.milky-footer {
+    margin-top: 56px;
+    padding: 40px clamp(18px, 4vw, 56px) 20px;
+    background: #7a8744;
+    color: #fff;
+    font-family: "Bodoni Moda", Georgia, serif;
+}
+
+.milky-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    width: min(100%, 1120px);
+    margin: 0 auto;
+}
+
+.milky-footer__section {
+    text-align: center;
+}
+
+.milky-footer h2,
+.milky-footer h3 {
+    margin: 0 0 14px;
+    color: #ffd7df;
+    font-family: "Amarante", Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.milky-footer p {
+    margin: 8px 0;
+    font-family: "Bodoni Moda", Georgia, serif;
+    line-height: 1.7;
+}
+
+.milky-footer__copy {
+    width: min(100%, 1120px);
+    margin: 28px auto 0 !important;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 680px) {
+    .milky-footer__grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
